@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maa Narmada Flex Chat</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7faff;color:#17233b}
+header{height:65px;background:white;border-bottom:1px solid #e5eaf2;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.logo{font-size:19px;font-weight:700;color:#1769d2}
+.logo span{color:#19a6c9}
+.status{font-size:12px;color:#168b64}
+main{max-width:850px;margin:35px auto;padding:15px}
+.welcome{text-align:center;margin:55px 0 35px}
+.welcome h1{font-size:30px;margin-bottom:10px}
+.welcome p{color:#718096}
+.chat{background:white;border:1px solid #e2eaf4;border-radius:18px;min-height:330px;padding:20px;box-shadow:0 8px 30px #163b6410}
+.messages{height:300px;overflow-y:auto}
+.msg{padding:13px 16px;border-radius:15px;margin:12px 0;max-width:85%;line-height:1.5}
+.bot{background:#edf5ff}
+.user{background:#1769d2;color:white;margin-left:auto}
+.input-area{display:flex;gap:9px;border:1px solid #dce5f0;border-radius:14px;padding:8px;margin-top:12px}
+input{flex:1;min-width:0;border:0;outline:0;padding:12px;font-size:15px}
+button{border:0;border-radius:11px;background:#1769d2;color:white;padding:12px 20px;font-size:15px;cursor:pointer}
+footer{text-align:center;color:#8793a5;font-size:12px;margin:25px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Maa Narmada <span>Flex Chat</span></div>
+  <div class="status">● Online</div>
+</header>
+
+<main>
+  <section class="welcome">
+    <h1>नमस्ते! आपका स्वागत है।</h1>
+    <p>मैं Maa Narmada Flex Chat हूँ। आप क्या जानना चाहते हैं?</p>
+  </section>
+
+  <section class="chat">
+    <div class="messages" id="messages">
+      <div class="msg bot">नमस्कार! बताइए, मैं आपकी क्या सहायता कर सकता हूँ?</div>
+    </div>
+    <div class="input-area">
+      <input id="question" placeholder="यहाँ अपना संदेश लिखें..." />
+      <button onclick="sendMessage()">भेजें</button>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Maa Narmada Flex Chat</footer>
+
+<script>
+function sendMessage(){
+  const input=document.getElementById("question");
+  const text=input.value.trim();
+  if(!text)return;
+  const messages=document.getElementById("messages");
+  const user=document.createElement("div");
+  user.className="msg user";
+  user.textContent=text;
+  messages.appendChild(user);
+  const bot=document.createElement("div");
+  bot.className="msg bot";
+  bot.textContent="आपका संदेश मिल गया है। Gemini AI कनेक्शन अगले चरण में जोड़ा जाएगा।";
+  messages.appendChild(bot);
+  input.value="";
+  messages.scrollTop=messages.scrollHeight;
+}
+</script>
+</body>
+</html>
+
